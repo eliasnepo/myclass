@@ -91,6 +91,30 @@ public class Course implements Serializable {
 	public void setCreatedAt(Instant createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	public Set<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(Set<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+
+	public Set<Deliver> getDeliveries() {
+		return deliveries;
+	}
+
+	public void setDeliveries(Set<Deliver> deliveries) {
+		this.deliveries = deliveries;
+	}
 
 	@Override
 	public int hashCode() {

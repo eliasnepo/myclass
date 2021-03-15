@@ -28,9 +28,17 @@ public class DeliverResource {
 	@Autowired
 	private DeliverService service;
 	
+	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
 	@GetMapping
 	public ResponseEntity<List<DeliverViewDTO>> getDeliveries() {
 		List<DeliverViewDTO> dto = service.getDeliveries();
+		return ResponseEntity.ok().body(dto);
+	}
+	
+	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<List<DeliverViewDTO>> getDeliveriesByCourse(@PathVariable Long id) {
+		List<DeliverViewDTO> dto = service.getDeliveriesByCourse(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	

@@ -2,6 +2,7 @@ package com.myclass.services;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.myclass.dto.DeliverDTO;
 import com.myclass.dto.DeliverRevisionDTO;
 import com.myclass.dto.DeliverViewDTO;
+import com.myclass.entities.Course;
 import com.myclass.entities.Deliver;
 import com.myclass.entities.enums.DeliverStatus;
+import com.myclass.repositories.CourseRepository;
 import com.myclass.repositories.DeliverRepository;
 
 
@@ -22,9 +25,19 @@ public class DeliverService {
 	@Autowired
 	private DeliverRepository repository;
 	
+	@Autowired
+	private CourseRepository courseRepository;
+	
 	@Transactional(readOnly = true)
 	public List<DeliverViewDTO> getDeliveries() {
 		List<Deliver> list = repository.findAll();
+		return list.stream().map(x -> new DeliverViewDTO(x)).collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true)
+	public List<DeliverViewDTO> getDeliveriesByCourse(Long id) {
+		Course course = courseRepository.getOne(id);
+		Set<Deliver> list = course.getDeliveries();
 		return list.stream().map(x -> new DeliverViewDTO(x)).collect(Collectors.toList());
 	}
 	
@@ -53,4 +66,6 @@ public class DeliverService {
 		entity.setUser(dto.getUser());
 		entity.setCourse(dto.getCourse());
 	}
+
+	
 }
