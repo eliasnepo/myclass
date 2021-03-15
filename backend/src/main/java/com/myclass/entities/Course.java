@@ -37,6 +37,9 @@ public class Course implements Serializable {
 	@OneToMany(mappedBy = "course")
 	private Set<Lesson> lessons = new HashSet<>();
 	
+	@OneToMany(mappedBy = "course")
+	private Set<Deliver> deliveries = new HashSet<>();
+	
 	public Course() {
 	}
 

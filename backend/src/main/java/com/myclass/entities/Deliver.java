@@ -37,6 +37,10 @@ public class Deliver implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name = "course_id")
+	private Course course;
+	
 	public Deliver() {
 	}
 
