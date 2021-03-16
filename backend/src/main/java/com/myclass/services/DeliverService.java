@@ -28,8 +28,12 @@ public class DeliverService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
+	@Autowired
+	private AuthService authService;
+	
 	@Transactional(readOnly = true)
 	public List<DeliverViewDTO> getDeliveries() {
+		authService.validateAdmin();
 		List<Deliver> list = repository.findAll();
 		return list.stream().map(x -> new DeliverViewDTO(x)).collect(Collectors.toList());
 	}

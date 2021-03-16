@@ -28,7 +28,7 @@ public class DeliverResource {
 	@Autowired
 	private DeliverService service;
 	
-	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
 	public ResponseEntity<List<DeliverViewDTO>> getDeliveries() {
 		List<DeliverViewDTO> dto = service.getDeliveries();
@@ -42,6 +42,7 @@ public class DeliverResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	@PreAuthorize("hasAnyRole('STUDENT')")
 	@PostMapping
 	public ResponseEntity<DeliverViewDTO> insert(@RequestBody DeliverDTO dto) {
 		DeliverViewDTO viewDto = service.insert(dto);
