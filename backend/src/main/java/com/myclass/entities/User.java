@@ -22,6 +22,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails, Serializable {
@@ -97,6 +98,22 @@ public class User implements UserDetails, Serializable {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
+	}
+
+	public Set<Deliver> getDeliveries() {
+		return deliveries;
+	}
+
+	public void setDeliveries(Set<Deliver> deliveries) {
+		this.deliveries = deliveries;
+	}
 
 	@Override
 	public int hashCode() {
@@ -152,5 +169,14 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+	
+	public boolean hasRole(String roleName) {
+		for (Role role : roles) {
+			if (role.getAuthority().equals(roleName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -22,7 +22,13 @@ INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Física 
 INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Matemática Discreta', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Lorem ipsum blablabla', NOW());
 
 INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 1);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 2);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 3);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 4);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 5);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 1);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 2);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 3);
 
 INSERT INTO tb_lesson (title, subtitle, course_id) VALUES ('Aula 1 - Parametrização de curvas', 'Nesta aula você aprenderá a parametrizar curvas', 1);
 
