@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myclass.dto.CourseDTO;
+import com.myclass.dto.CourseViewDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.User;
 
@@ -19,10 +19,10 @@ public class CourseService {
 	private AuthService authService;
 
 	@Transactional
-	public List<CourseDTO> findListOfCoursesByUserAuthenticated() {
+	public List<CourseViewDTO> findListOfCoursesByUserAuthenticated() {
 		User user = authService.authenticated();
 		Set<Course> list = user.getCourses();
-		return list.stream().map(x -> new CourseDTO(x)).collect(Collectors.toList());
+		return list.stream().map(x -> new CourseViewDTO(x)).collect(Collectors.toList());
 	}
 
 }

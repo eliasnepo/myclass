@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myclass.dto.CourseDTO;
+import com.myclass.dto.CourseViewDTO;
 import com.myclass.services.CourseService;
 
 @RestController
@@ -19,8 +19,8 @@ public class CoursesRecourse {
 	private CourseService service;
 	
 	@GetMapping
-	public ResponseEntity<List<CourseDTO>> findListOfCoursesByUserAuthenticated() {
-		List<CourseDTO> list = service.findListOfCoursesByUserAuthenticated();
+	public ResponseEntity<List<CourseViewDTO>> findListOfCoursesByUserAuthenticated() {
+		List<CourseViewDTO> list = service.findListOfCoursesByUserAuthenticated();
 		return ResponseEntity.ok().body(list);
 	}
 }

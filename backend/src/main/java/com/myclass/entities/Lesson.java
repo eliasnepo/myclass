@@ -61,6 +61,14 @@ public class Lesson implements Serializable {
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
 	}
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
 	@Override
 	public int hashCode() {
