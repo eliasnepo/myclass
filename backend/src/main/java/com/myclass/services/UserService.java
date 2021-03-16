@@ -6,9 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.myclass.dto.CourseDTO;
+import com.myclass.dto.UserInsertDTO;
+import com.myclass.dto.UserViewDTO;
+import com.myclass.entities.Course;
+import com.myclass.entities.Role;
 import com.myclass.entities.User;
+import com.myclass.repositories.CourseRepository;
+import com.myclass.repositories.RoleRepository;
 import com.myclass.repositories.UserRepository;
 
 
@@ -20,6 +29,24 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository repository;
 	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Transactional
+	public UserViewDTO insert(UserInsertDTO dto) {
+		User entity = new User();
+		copyDtoToEntity(dto, entity);
+		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+		entity = repository.save(entity);
+		return new UserViewDTO(entity, entity.getRoles(), entity.getCourses());
+	}
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = repository.findByEmail(username);
@@ -29,5 +56,25 @@ public class UserService implements UserDetailsService {
 		}
 		logger.info("Usuário encontrado: " + username);
 		return user;
+	}
+	
+	private void copyDtoToEntity(UserInsertDTO dto, User entity) {
+		entity.setName(dto.getName());
+		entity.setEmail(dto.getEmail());
+		entity.setUniversity(dto.getUniversity());
+		entity.getRoles().clear();
+		Role role = roleRepository.getOne(1L);
+		entity.getRoles().add(role);
+		entity.getCourses().clear();
+		for (CourseDTO courseDto : dto.getCourses()) {
+			Course course = courseRepository.getOne(courseDto.getId());
+			entity.getCourses().add(course);
+		}
+		
+		/*entity.getRoles().clear();
+		for (RoleDTO roleDto : dto.getRoles()) {
+			Role role = roleRepository.getOne(roleDto.getId());
+			entity.getRoles().add(role);
+		} MÉTODOS PARA DICIONAR ROLES PASSADO NO DTO */
 	}
 }

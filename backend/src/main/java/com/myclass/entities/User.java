@@ -32,6 +32,7 @@ public class User implements UserDetails, Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String university;
 	
 	@Column(unique = true)
 	private String email;
@@ -73,6 +74,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(String university) {
+		this.university = university;
 	}
 
 	public String getEmail() {
