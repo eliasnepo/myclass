@@ -2,7 +2,6 @@ package com.myclass.dto;
 
 import java.io.Serializable;
 
-import com.myclass.entities.Course;
 import com.myclass.entities.Lesson;
 
 public class LessonDTO implements Serializable {
@@ -11,24 +10,24 @@ public class LessonDTO implements Serializable {
 	private Long id;
 	private String title;
 	private String subtitle;
-	private Course course;
+	// private CourseViewDTO course;
 	
 	public LessonDTO() {
 	}
 
-	public LessonDTO(Long id, String title, String subtitle, Course course) {
+	public LessonDTO(Long id, String title, String subtitle, CourseDTO course) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.subtitle = subtitle;
-		this.course = course;
+		// this.course = course;
 	}
 	
 	public LessonDTO(Lesson entity) {
 		this.id = entity.getId();
 		this.title = entity.getTitle();
 		this.subtitle = entity.getSubtitle();
-		this.course = entity.getCourse();
+		// this.course = new CourseViewDTO(entity.getCourse());
 	}
 
 	public Long getId() {
@@ -55,11 +54,11 @@ public class LessonDTO implements Serializable {
 		this.subtitle = subtitle;
 	}
 
-	public Course getCourse() {
+	/*public CourseViewDTO getCourse() {
 		return course;
 	}
 
-	public void setCourse(Course course) {
+	public void setCourse(CourseViewDTO course) {
 		this.course = course;
-	}
+	}*/
 }

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.myclass.dto.DeliverDTO;
+import com.myclass.dto.DeliverInsertDTO;
 import com.myclass.dto.DeliverRevisionDTO;
-import com.myclass.dto.DeliverViewDTO;
 import com.myclass.services.DeliverService;
 
 
@@ -30,22 +30,22 @@ public class DeliverResource {
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
-	public ResponseEntity<List<DeliverViewDTO>> getDeliveries() {
-		List<DeliverViewDTO> dto = service.getDeliveries();
+	public ResponseEntity<List<DeliverDTO>> getDeliveries() {
+		List<DeliverDTO> dto = service.getDeliveries();
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<List<DeliverViewDTO>> getDeliveriesByCourse(@PathVariable Long id) {
-		List<DeliverViewDTO> dto = service.getDeliveriesByCourse(id);
+	public ResponseEntity<List<DeliverDTO>> getDeliveriesByCourse(@PathVariable Long id) {
+		List<DeliverDTO> dto = service.getDeliveriesByCourse(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PreAuthorize("hasAnyRole('STUDENT')")
 	@PostMapping
-	public ResponseEntity<DeliverViewDTO> insert(@RequestBody DeliverDTO dto) {
-		DeliverViewDTO viewDto = service.insert(dto);
+	public ResponseEntity<DeliverDTO> insert(@RequestBody DeliverInsertDTO dto) {
+		DeliverDTO viewDto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(viewDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(viewDto);

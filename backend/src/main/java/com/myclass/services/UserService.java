@@ -10,9 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myclass.dto.CourseDTO;
+import com.myclass.dto.CourseWithDetailsDTO;
 import com.myclass.dto.UserInsertDTO;
-import com.myclass.dto.UserViewDTO;
+import com.myclass.dto.UserDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.Role;
 import com.myclass.entities.User;
@@ -39,12 +39,12 @@ public class UserService implements UserDetailsService {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Transactional
-	public UserViewDTO insert(UserInsertDTO dto) {
+	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(dto, entity);
 		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 		entity = repository.save(entity);
-		return new UserViewDTO(entity, entity.getRoles(), entity.getCourses());
+		return new UserDTO(entity, entity.getRoles());
 	}
 	
 	@Override
@@ -66,7 +66,7 @@ public class UserService implements UserDetailsService {
 		Role role = roleRepository.getOne(1L);
 		entity.getRoles().add(role);
 		entity.getCourses().clear();
-		for (CourseDTO courseDto : dto.getCourses()) {
+		for (CourseWithDetailsDTO courseDto : dto.getCourses()) {
 			Course course = courseRepository.getOne(courseDto.getId());
 			entity.getCourses().add(course);
 		}

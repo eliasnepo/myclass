@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.myclass.entities.Course;
 import com.myclass.entities.Role;
 import com.myclass.entities.User;
 
-public class UserViewDTO implements Serializable {
+public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -17,12 +16,11 @@ public class UserViewDTO implements Serializable {
 	private String email;
 	private String university;
 	private List<RoleDTO> roles = new ArrayList<>();
-	private List<CourseDTO> courses = new ArrayList<>();
 
-	public UserViewDTO() {
+	public UserDTO() {
 	}
 
-	public UserViewDTO(Long id, String name, String email, String university) {
+	public UserDTO(Long id, String name, String email, String university) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -30,17 +28,16 @@ public class UserViewDTO implements Serializable {
 		this.university = university;
 	}
 
-	public UserViewDTO(User user) {
+	public UserDTO(User user) {
 		id = user.getId();
 		name = user.getName();
 		email = user.getEmail();
 		university = user.getUniversity();
 	}
 	
-	public UserViewDTO(User user, Set<Role> roles, Set<Course> courses) {
+	public UserDTO(User user, Set<Role> roles) {
 		this(user);
 		roles.forEach(role -> this.roles.add(new RoleDTO(role)));
-		courses.forEach(course -> this.courses.add(new CourseDTO(course)));
 	}
 
 	public Long getId() {
@@ -81,13 +78,5 @@ public class UserViewDTO implements Serializable {
 
 	public void setRoles(List<RoleDTO> roles) {
 		this.roles = roles;
-	}
-
-	public List<CourseDTO> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<CourseDTO> courses) {
-		this.courses = courses;
 	}
 }

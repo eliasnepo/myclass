@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.myclass.dto.UserInsertDTO;
-import com.myclass.dto.UserViewDTO;
+import com.myclass.dto.UserDTO;
 import com.myclass.services.UserService;
 
 
@@ -25,8 +25,8 @@ public class UserRegisterResource {
 	private UserService service;
 	
 	@PostMapping
-	public ResponseEntity<UserViewDTO> insert(@Valid @RequestBody UserInsertDTO dto) {
-		UserViewDTO newDto = service.insert(dto);
+	public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserInsertDTO dto) {
+		UserDTO newDto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(newDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(newDto);

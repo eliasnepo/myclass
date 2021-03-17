@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myclass.dto.DeliverDTO;
+import com.myclass.dto.DeliverInsertDTO;
 import com.myclass.dto.DeliverRevisionDTO;
-import com.myclass.dto.DeliverViewDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.Deliver;
+import com.myclass.entities.Lesson;
+import com.myclass.entities.User;
 import com.myclass.entities.enums.DeliverStatus;
 import com.myclass.repositories.CourseRepository;
 import com.myclass.repositories.DeliverRepository;
+import com.myclass.repositories.LessonRepository;
+import com.myclass.repositories.UserRepository;
 
 
 @Service
@@ -29,28 +33,34 @@ public class DeliverService {
 	private CourseRepository courseRepository;
 	
 	@Autowired
+	private LessonRepository lessonRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
 	private AuthService authService;
 	
 	@Transactional(readOnly = true)
-	public List<DeliverViewDTO> getDeliveries() {
+	public List<DeliverDTO> getDeliveries() {
 		authService.validateAdmin();
 		List<Deliver> list = repository.findAll();
-		return list.stream().map(x -> new DeliverViewDTO(x)).collect(Collectors.toList());
+		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional(readOnly = true)
-	public List<DeliverViewDTO> getDeliveriesByCourse(Long id) {
+	public List<DeliverDTO> getDeliveriesByCourse(Long id) {
 		Course course = courseRepository.getOne(id);
 		Set<Deliver> list = course.getDeliveries();
-		return list.stream().map(x -> new DeliverViewDTO(x)).collect(Collectors.toList());
+		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional
-	public DeliverViewDTO insert(DeliverDTO dto) {
+	public DeliverDTO insert(DeliverInsertDTO dto) {
 		Deliver entity = new Deliver();
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
-		return new DeliverViewDTO(entity);
+		return new DeliverDTO(entity);
 	}
 	
 	@Transactional
@@ -61,14 +71,17 @@ public class DeliverService {
 		repository.save(deliver);
 	}
 	
-	private void copyDtoToEntity(DeliverDTO dto, Deliver entity) {
+	private void copyDtoToEntity(DeliverInsertDTO dto, Deliver entity) {
 		entity.setUri(dto.getUri());
 		entity.setCreatedAt(Instant.now());
 		entity.setStatus(DeliverStatus.PENDING);
 		entity.setFeedback("");
-		entity.setTask(dto.getTask());
-		entity.setUser(dto.getUser());
-		entity.setCourse(dto.getCourse());
+		Lesson task = lessonRepository.getOne(dto.getTask().getId());
+		entity.setTask(task);
+		User user = userRepository.getOne(dto.getUser().getId());
+		entity.setUser(user);
+		Course course = courseRepository.getOne(dto.getCourse().getId());
+		entity.setCourse(course);
 	}
 
 	
