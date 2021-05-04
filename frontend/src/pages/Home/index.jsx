@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomButton from '../../core/components/CustomButton/CustomButton';
 import CourseCard from './components/CourseCard/CourseCard';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import styles from './Home.module.css';
@@ -8,7 +9,7 @@ export default function Home() {
         <div className={styles.pageContainer}>
             <div className={styles.headersContainer}>
                 <h1>HOME</h1>
-                <button className={styles.logoutButton}>SAIR</button>
+                <CustomButton buttonText="SAIR" />
             </div>
             <div className={styles.content}>
                 <div className={styles.coursesContainer}>
