@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.myclass.entities.enums.LessonOrTask;
+
 @Entity
 @Table(name = "tb_lesson")
 public class Lesson implements Serializable {
@@ -20,6 +22,7 @@ public class Lesson implements Serializable {
 	private Long id;
 	private String title;
 	private String subtitle;
+	private LessonOrTask status;
 	
 	@ManyToOne
 	@JoinColumn(name = "course_id")
@@ -31,7 +34,7 @@ public class Lesson implements Serializable {
 	public Lesson() {
 	}
 
-	public Lesson(Long id, String title, String subtitle) {
+	public Lesson(Long id, String title, String subtitle, LessonOrTask status) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -62,6 +65,14 @@ public class Lesson implements Serializable {
 		this.subtitle = subtitle;
 	}
 	
+	public LessonOrTask getStatus() {
+		return status;
+	}
+
+	public void setStatus(LessonOrTask status) {
+		this.status = status;
+	}
+
 	public Course getCourse() {
 		return course;
 	}

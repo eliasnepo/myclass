@@ -30,10 +30,10 @@ INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 1);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 2);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 3);
 
-INSERT INTO tb_lesson (title, subtitle, course_id) VALUES ('Aula 1 - Parametrização de curvas', 'Nesta aula você aprenderá a parametrizar curvas', 1);
-INSERT INTO tb_lesson (title, subtitle, course_id) VALUES ('Aula 2 - Integrais de linhas', 'Nesta aula você aprenderá a calcular integrais de linhas', 1);
-INSERT INTO tb_lesson (title, subtitle, course_id) VALUES ('Tarefa 1 - Lista sobre integrais de linhas', 'Resolva a lista sobre integrais de linhas', 1);
-INSERT INTO tb_lesson (title, subtitle, course_id) VALUES ('Aula 3 - Parametrização de superfícies', 'Nesta aula você aprenderá a parametrizar superfícies', 1);
+INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 1 - Parametrização de curvas', 'Nesta aula você aprenderá a parametrizar curvas', 0, 1);
+INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 2 - Integrais de linhas', 'Nesta aula você aprenderá a calcular integrais de linhas', 0, 1);
+INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Tarefa 1 - Lista sobre integrais de linhas', 'Resolva a lista sobre integrais de linhas', 1, 1);
+INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 3 - Parametrização de superfícies', 'Nesta aula você aprenderá a parametrizar superfícies', 1, 1);
 
 INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 1, 1, 1);
 INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 1, 1, 1);

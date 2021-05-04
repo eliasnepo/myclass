@@ -3,6 +3,7 @@ package com.myclass.dto;
 import java.io.Serializable;
 
 import com.myclass.entities.Lesson;
+import com.myclass.entities.enums.LessonOrTask;
 
 public class LessonDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -10,16 +11,18 @@ public class LessonDTO implements Serializable {
 	private Long id;
 	private String title;
 	private String subtitle;
+	private LessonOrTask status;
 	// private CourseViewDTO course;
 	
 	public LessonDTO() {
 	}
 
-	public LessonDTO(Long id, String title, String subtitle, CourseDTO course) {
+	public LessonDTO(Long id, String title, String subtitle, LessonOrTask status, CourseDTO course) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.subtitle = subtitle;
+		this.status = status;
 		// this.course = course;
 	}
 	
@@ -27,6 +30,7 @@ public class LessonDTO implements Serializable {
 		this.id = entity.getId();
 		this.title = entity.getTitle();
 		this.subtitle = entity.getSubtitle();
+		this.status = entity.getStatus();
 		// this.course = new CourseViewDTO(entity.getCourse());
 	}
 
@@ -54,11 +58,11 @@ public class LessonDTO implements Serializable {
 		this.subtitle = subtitle;
 	}
 
-	/*public CourseViewDTO getCourse() {
-		return course;
+	public LessonOrTask getStatus() {
+		return status;
 	}
 
-	public void setCourse(CourseViewDTO course) {
-		this.course = course;
-	}*/
+	public void setStatus(LessonOrTask status) {
+		this.status = status;
+	}
 }
