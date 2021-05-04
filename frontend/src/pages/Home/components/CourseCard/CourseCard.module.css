@@ -1,0 +1,32 @@
+.container {
+    width: 240px;
+    height: 240px;
+    padding-top: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: var(--light-blue2);
+}
+
+.courseTitle {
+    font-size: 24px;
+    line-height: 36px;
+    color: white;
+}
+
+.courseDescription {
+    margin-top: 10px;
+    width: 220px;
+    height: 50px;
+    
+    /*Multiple line text truncation*/
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: white;
+}
