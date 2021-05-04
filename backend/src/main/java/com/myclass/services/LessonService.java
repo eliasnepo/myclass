@@ -29,6 +29,7 @@ public class LessonService {
 	private void copyDtoToEntity(LessonInsertDTO dto, Lesson entity) {
 		entity.setTitle(dto.getTitle());
 		entity.setSubtitle(dto.getSubtitle());
+		entity.setStatus(dto.getStatus());
 		Course course = courseRepository.getOne(dto.getCourse().getId());
 		entity.setCourse(course);
 	}
