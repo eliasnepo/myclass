@@ -1,0 +1,33 @@
+.container {
+    width: 330px;
+    height: 70vh;
+    min-height: 520px;
+    padding-top: 30px;
+
+    background-color: var(--light-blue1);
+    border-radius: 10px;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.studentInfo {
+    align-self: flex-start;
+    margin-top: 22px;
+    margin-left: 16px;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.marginTop7 {
+    margin-top: 7px;
+}
+
+.multilineTruncation {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
