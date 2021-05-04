@@ -1,0 +1,17 @@
+.navContainer {
+    width: 100%;
+    height: 50px;
+    padding-left: 40px;
+
+    background-color: var(--dark-blue2);
+
+    display: grid;
+    align-items: center;
+}
+
+.navTitle {
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
