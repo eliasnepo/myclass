@@ -5,8 +5,11 @@ import styles from './Home.module.css';
 
 export default function Home() {
     return(
-        <div>
-            <h1>HOME</h1>
+        <div className={styles.pageContainer}>
+            <div className={styles.headersContainer}>
+                <h1>HOME</h1>
+                <button className={styles.logoutButton}>SAIR</button>
+            </div>
             <div className={styles.content}>
                 <div className={styles.coursesContainer}>
                     <CourseCard 

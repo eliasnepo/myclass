@@ -1,6 +1,7 @@
 .container {
     width: 330px;
     height: 70vh;
+    min-height: 520px;
     padding-top: 30px;
 
     background-color: var(--light-blue1);
