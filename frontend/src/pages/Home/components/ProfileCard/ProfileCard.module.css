@@ -20,11 +20,13 @@
     font-weight: 600;
 }
 
+.marginTop7 {
+    margin-top: 7px;
+}
+
 .multilineTruncation {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
-    margin-top: 7px;
 }

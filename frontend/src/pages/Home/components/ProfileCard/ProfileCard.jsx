@@ -9,10 +9,10 @@ export default function ProfileCard(props) {
                 <p className={`${styles.studentName} ${styles.multilineTruncation}`}>
                     Aluno: {props.studentName}
                 </p>
-                <p className={`${styles.institutionName} ${styles.multilineTruncation}`}>
+                <p className={`${styles.institutionName} ${styles.multilineTruncation} ${styles.marginTop7}`}>
                     Instituição: {props.institutionName}
                 </p>
-                <p className={`${styles.courseCount} ${styles.multilineTruncation}`}>
+                <p className={`${styles.courseCount} ${styles.multilineTruncation} ${styles.marginTop7}`}>
                     Cursos matriculados: {props.courseCount}
                 </p>
             </div>
