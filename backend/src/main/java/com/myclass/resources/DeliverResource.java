@@ -35,6 +35,12 @@ public class DeliverResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	@GetMapping(value = "/person")
+	public ResponseEntity<List<DeliverDTO>> getDeliveriesOfUser() {
+		List<DeliverDTO> dto = service.getDeliveriesOfUser();
+		return ResponseEntity.ok().body(dto);
+	}
+	
 	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<List<DeliverDTO>> getDeliveriesByCourse(@PathVariable Long id) {
