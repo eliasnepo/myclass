@@ -1,10 +1,8 @@
 package com.myclass.services;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,10 +23,10 @@ public class CourseService {
 	private AuthService authService;
 
 	@Transactional
-	public List<CourseDTO> findListOfCoursesByUserAuthenticated() {
+	public Page<CourseDTO> findListOfCoursesByUserAuthenticated(Pageable pageable) {
 		User user = authService.authenticated();
-		Set<Course> list = user.getCourses();
-		return list.stream().map(x -> new CourseDTO(x)).collect(Collectors.toList());
+		Page<Course> page = repository.find(user, pageable);
+		return page.map(course -> new CourseDTO(course));
 	}
 	
 	@Transactional(readOnly = true)

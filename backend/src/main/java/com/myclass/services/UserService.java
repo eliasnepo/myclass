@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.myclass.dto.CourseWithDetailsDTO;
 import com.myclass.dto.UserInsertDTO;
 import com.myclass.dto.UserDTO;
+import com.myclass.dto.UserInfoDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.Role;
 import com.myclass.entities.User;
@@ -38,6 +39,9 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private AuthService authService;
+	
 	@Transactional
 	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
@@ -45,6 +49,11 @@ public class UserService implements UserDetailsService {
 		entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 		entity = repository.save(entity);
 		return new UserDTO(entity, entity.getRoles());
+	}
+	
+	public UserInfoDTO loadUserInfo() {
+		User user = authService.authenticated();
+		return new UserInfoDTO(user);
 	}
 	
 	@Override

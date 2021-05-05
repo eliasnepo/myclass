@@ -1,6 +1,7 @@
 .pageContainer {
     max-width: 1135px;
     margin: 0 auto;
+    padding-bottom: 40px;
 }
 
 .headersContainer {
@@ -16,8 +17,24 @@
     justify-content: center;
 }
 
+.logoutButton {
+    width: 80px;
+    height: 40px;
+
+    font-weight: 700;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+    transition: 0.35s;
+}
+
+.logoutButton:hover {
+    filter: brightness(0.8);
+}
+
 .coursesContainer {
-    max-height: 520px;
+    height: 630px;
 
     align-self: center;
 
@@ -35,4 +52,3 @@
 
     border-left: 3px solid var(--dark-blue1) ;
 }
-
