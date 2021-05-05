@@ -12,17 +12,20 @@ import './styles.css';
 const Course = () => {
     const { courseId } = useParams();
     const [listOfTaskOrLesson, setListOfTaskOrLesson] = useState({});
+    const [deliveriesList, setDeliveriesList] = useState([]);
 
     useEffect(() => {
         makePrivateRequest({ url: `${BASE_URL}/courses/${courseId}`, method: 'GET' })
         .then(response => {
             setListOfTaskOrLesson(response.data)
         })
-        .finally(() => {
+
+        makePrivateRequest({ url: `${BASE_URL}/deliveries/person/gets`, method: 'GET' })
+        .then(response => {
+            setDeliveriesList(response.data);
         })
     }, [courseId]);
     
-    console.log(listOfTaskOrLesson)
     
     return (
         <div className="container-course-page">
@@ -39,11 +42,11 @@ const Course = () => {
                             <button className="button-delivery-by-course">ENTREGAS</button>
                         </Link>
                     )}
-                    {isAllowedByRole(['ROLE_STUDENT']) && (
+                    {/* {isAllowedByRole(['ROLE_STUDENT']) && (
                         <Link to={`/user/deliveries`}>
                             <button className="button-delivery-by-course">MINHAS ENTREGAS</button>
                         </Link>
-                    )}
+                    )} */}
                     {isAllowedByRole(['ROLE_INSTRUCTOR']) && (
                         <Link to={`/course/${courseId}/insert`}>
                             <button className="button-delivery-by-course">INSERIR AULA</button>
@@ -53,9 +56,29 @@ const Course = () => {
                 </div>
             </div>
             <div className="course-page-container">
-                {listOfTaskOrLesson.lessons?.map(lesson => (
-                    lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
-                )
+                {listOfTaskOrLesson.lessons?.map(lesson => {
+                    let hide = false;
+                    let statusDelivery = '';
+                    let feedbackDelivery = '';
+                    deliveriesList.map(delivery => {
+                        if (delivery.lesson.id === lesson.id) {
+                            if (delivery.status === "ACCEPTED" || delivery.status === "REJECTED") {
+                                hide = true;
+                                statusDelivery = delivery.status;
+                                feedbackDelivery = delivery.feedback;
+                            }
+                            if (delivery.status === "PENDING") {
+                                statusDelivery = delivery.status;
+                            }
+                        }
+                    })
+                    
+                    return (
+                        lesson.status === "TASK" ? <Task key={lesson.id} id={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide} delivery={statusDelivery} feedback={feedbackDelivery}/> 
+                        : 
+                        <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
+                    )
+                }
                 )}
             </div>
         </div>

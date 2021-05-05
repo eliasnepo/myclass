@@ -31,7 +31,7 @@ public class Deliver implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
-	private Lesson task;
+	private Lesson lesson;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -94,11 +94,11 @@ public class Deliver implements Serializable {
 	}
 	
 	public Lesson getTask() {
-		return task;
+		return lesson;
 	}
 
 	public void setTask(Lesson task) {
-		this.task = task;
+		this.lesson = task;
 	}
 
 	public User getUser() {

@@ -36,8 +36,5 @@ INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Tarefa 1 - L
 INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 3 - Parametrização de superfícies', 'Nesta aula você aprenderá a parametrizar superfícies', 1, 1);
 
 INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 3, 1, 1);
-INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 3, 1, 1);
-INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 3, 1, 1);
-INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 4, 1, 1);
 INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 4, 1, 1);
 INSERT INTO tb_deliver (uri, created_At, status, feedback, lesson_id, user_id, course_id) VALUES ('https://github.com/eliasnepo/myclass', TIMESTAMP WITH TIME ZONE '2020-12-10T10:00:00Z', 0, null, 4, 2, 2);

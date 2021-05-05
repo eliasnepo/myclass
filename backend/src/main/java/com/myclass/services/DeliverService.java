@@ -72,9 +72,21 @@ public class DeliverService {
 	@Transactional
 	public DeliverDTO insert(DeliverInsertDTO dto) {
 		Deliver entity = new Deliver();
-		copyDtoToEntity(dto, entity);
-		entity = repository.save(entity);
-		return new DeliverDTO(entity);
+		User user = userRepository.getOne(dto.getUser().getId());
+		Course course = courseRepository.getOne(dto.getCourse().getId());
+		Lesson lesson = lessonRepository.getOne(dto.getTask().getId());
+		
+		if (repository.findCustomDeliver(user, lesson, course) != null) {
+			Deliver deliver = repository.findCustomDeliver(user, lesson, course);
+			deliver.setCreatedAt(Instant.now());
+			deliver.setUri(dto.getUri());
+			deliver = repository.save(deliver);
+			return new DeliverDTO(deliver);
+		} else {
+			copyDtoToEntity(dto, entity);
+			entity = repository.save(entity);
+			return new DeliverDTO(entity);
+		}
 	}
 	
 	@Transactional
