@@ -3,9 +3,10 @@ import CourseCard from './components/CourseCard/CourseCard';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import { makePrivateRequest } from '../../core/utils/request.js'
 import styles from './Home.module.css';
-import { BASE_URL, logout } from '../../core/utils/auth';
+import { BASE_URL } from '../../core/utils/auth';
 import Pagination from '../../core/components/Pagination/Pagination';
 import { Link } from 'react-router-dom';
+import ButtonLogout from '../../core/components/ButtonLogout';
 
 export default function Home() {
     const [courses, setCourses] = useState([])
@@ -35,8 +36,10 @@ export default function Home() {
     return(
         <div className={styles.pageContainer}>
             <div className={styles.headersContainer}>
-                <h1>HOME</h1>
-                <button className={styles.logoutButton} onClick={() => logout()}>SAIR</button>
+                <h1>Bem vindo(a), {userInfo.name}</h1>
+                <div className={styles.logoutButton}>
+                    <ButtonLogout />
+                </div>
             </div>
             <div className={styles.content}>
                 <div className={styles.coursesContainer}>
@@ -44,7 +47,7 @@ export default function Home() {
                         <Link to={`course/${course.id}`}>
                             <CourseCard 
                             courseTitle={course.name}
-                            courseDescription={course.description}
+                            imgUri={course.imgUri}
                             key={course.id}
                             />
                         </Link>
