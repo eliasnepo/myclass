@@ -5,6 +5,7 @@ import { makePrivateRequest } from '../../core/utils/request.js'
 import styles from './Home.module.css';
 import { BASE_URL, logout } from '../../core/utils/auth';
 import Pagination from '../../core/components/Pagination/Pagination';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [courses, setCourses] = useState([])
@@ -40,11 +41,13 @@ export default function Home() {
             <div className={styles.content}>
                 <div className={styles.coursesContainer}>
                     {courses?.map((course) => (
-                        <CourseCard 
-                        courseTitle={course.name}
-                        courseDescription={course.description}
-                        key={course.id}
-                        />
+                        <Link to={`course/${course.id}`}>
+                            <CourseCard 
+                            courseTitle={course.name}
+                            courseDescription={course.description}
+                            key={course.id}
+                            />
+                        </Link>
                     ))}
                     <Pagination 
                     totalPages={totalPages} 
