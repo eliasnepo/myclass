@@ -42,11 +42,11 @@ const Course = () => {
                             <button className="button-delivery-by-course">ENTREGAS</button>
                         </Link>
                     )}
-                    {isAllowedByRole(['ROLE_STUDENT']) && (
+                    {/* {isAllowedByRole(['ROLE_STUDENT']) && (
                         <Link to={`/user/deliveries`}>
                             <button className="button-delivery-by-course">MINHAS ENTREGAS</button>
                         </Link>
-                    )}
+                    )} */}
                     {isAllowedByRole(['ROLE_INSTRUCTOR']) && (
                         <Link to={`/course/${courseId}/insert`}>
                             <button className="button-delivery-by-course">INSERIR AULA</button>
@@ -74,7 +74,7 @@ const Course = () => {
                     })
                     
                     return (
-                        lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide} delivery={statusDelivery} feedback={feedbackDelivery}/> 
+                        lesson.status === "TASK" ? <Task key={lesson.id} id={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide} delivery={statusDelivery} feedback={feedbackDelivery}/> 
                         : 
                         <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
                     )
