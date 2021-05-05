@@ -4,6 +4,7 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 import { makePrivateRequest } from '../../core/utils/request.js'
 import styles from './Home.module.css';
 import { BASE_URL, logout } from '../../core/utils/auth';
+import Pagination from '../../core/components/Pagination/Pagination';
 
 export default function Home() {
     const [courses, setCourses] = useState([])
@@ -38,6 +39,7 @@ export default function Home() {
                         key={course.id}
                         />
                     ))}
+                    <Pagination />
                 </div>
 
                 <div className={styles.profileContainer}>
