@@ -9,13 +9,20 @@ import Pagination from '../../core/components/Pagination/Pagination';
 export default function Home() {
     const [courses, setCourses] = useState([])
     const [userInfo, setUserInfo] = useState({})
+    const [totalPages, setTotalPages] = useState(1)
+    const [activePage, setActivePage] = useState(0)
 
     useEffect(() => {
-        makePrivateRequest({method: 'GET', url: `${BASE_URL}/courses`})
+        const params = {
+            page: activePage
+        }
+
+        makePrivateRequest({method: 'GET', url: `${BASE_URL}/courses`, params})
         .then(response => {
-            setCourses(response.data)
+            setCourses(response.data.content)
+            setTotalPages(response.data.totalPages)
         })
-    }, [])
+    }, [activePage])
 
     useEffect(() => {
         makePrivateRequest({method: 'GET', url: `${BASE_URL}/user`})
@@ -39,7 +46,11 @@ export default function Home() {
                         key={course.id}
                         />
                     ))}
-                    <Pagination />
+                    <Pagination 
+                    totalPages={totalPages} 
+                    activePage={activePage}
+                    onChange={page => (setActivePage(page))}
+                    />
                 </div>
 
                 <div className={styles.profileContainer}>

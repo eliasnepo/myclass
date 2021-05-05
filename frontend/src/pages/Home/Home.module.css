@@ -1,6 +1,7 @@
 .pageContainer {
     max-width: 1135px;
     margin: 0 auto;
+    padding-bottom: 40px;
 }
 
 .headersContainer {
@@ -33,7 +34,7 @@
 }
 
 .coursesContainer {
-    max-height: 520px;
+    height: 630px;
 
     align-self: center;
 
@@ -51,4 +52,3 @@
 
     border-left: 3px solid var(--dark-blue1) ;
 }
-
