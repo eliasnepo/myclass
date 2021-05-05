@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import com.myclass.entities.Deliver;
+import com.myclass.entities.Lesson;
 import com.myclass.entities.User;
 import com.myclass.entities.enums.DeliverStatus;
 
@@ -16,12 +17,13 @@ public class DeliverDTO implements Serializable {
 	private DeliverStatus status;
 	private String feedback;
 	private UserDTO user;
+	private LessonDTO lesson;
 	
 	public DeliverDTO() {
 	}
 
 	public DeliverDTO(Long id, String uri, Instant createdAt, DeliverStatus status, String feedback,
-			User user) {
+			User user, Lesson lesson) {
 		super();
 		this.id = id;
 		this.uri = uri;
@@ -29,6 +31,7 @@ public class DeliverDTO implements Serializable {
 		this.status = status;
 		this.feedback = feedback;
 		this.user = new UserDTO(user);
+		this.lesson = new LessonDTO(lesson);
 	}
 	
 	public DeliverDTO(Deliver entity) {
@@ -39,6 +42,7 @@ public class DeliverDTO implements Serializable {
 		this.status = entity.getStatus();
 		this.feedback = entity.getFeedback();
 		this.user = new UserDTO(entity.getUser());
+		this.lesson = new LessonDTO(entity.getTask());
 	}
 
 	public Long getId() {
@@ -87,5 +91,13 @@ public class DeliverDTO implements Serializable {
 
 	public void setUser(UserDTO user) {
 		this.user = user;
+	}
+
+	public LessonDTO getLesson() {
+		return lesson;
+	}
+
+	public void setLesson(LessonDTO lesson) {
+		this.lesson = lesson;
 	}
 }

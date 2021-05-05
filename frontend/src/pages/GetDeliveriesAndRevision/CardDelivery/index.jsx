@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { BASE_URL } from '../../../core/utils/auth';
+import { makePrivateRequest } from '../../../core/utils/request';
 import './styles.css';
 
 const CardDelivery = (props) => {
@@ -25,17 +27,22 @@ const CardDelivery = (props) => {
         } else {
             setStatusName("REJEITADO")
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const onSubmit = data => {
-        console.log(data)
+        makePrivateRequest({ url: `${BASE_URL}/deliveries/${props.id}`, method: 'PUT', data })
+        .then(response => {
+            window.location.reload();
+        })
     }
 
     return (
         <div className="card-delivery-container">
             <h1 className={`title-card-delivery ${props.status}`}>{statusName}</h1>
             <div className="content-info-above">
-                <p className="uri-link"><strong>Link:</strong> {props.uri}</p>
+                <p className="uri-link"><strong>Tarefa:</strong> {props.lesson.title}</p>
+                <p className="uri-link"><strong>Resolução:</strong> {props.uri}</p>
                 <p><strong>Aluno:</strong> {props.user.name}</p>
                 <p><strong>Data:</strong> {`${data.toLocaleDateString("pt-br")} às ${formatDate(data.getHours())}:${formatDate(data.getMinutes())}`}</p>
             </div>

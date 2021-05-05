@@ -62,6 +62,13 @@ public class DeliverService {
 		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
 	}
 	
+	@Transactional(readOnly = true)
+	public List<DeliverDTO> getDeliveriesOfUser() {
+		User user = authService.authenticated();
+		Set<Deliver> list = user.getDeliveries();
+		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
+	}
+	
 	@Transactional
 	public DeliverDTO insert(DeliverInsertDTO dto) {
 		Deliver entity = new Deliver();
@@ -91,5 +98,4 @@ public class DeliverService {
 		entity.setCourse(course);
 	}
 
-	
 }

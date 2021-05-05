@@ -13,3 +13,8 @@
   --dark-blue1: #145DA0;
   --dark-blue2: #0C2D48;
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}

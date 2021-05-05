@@ -6,6 +6,7 @@ import Course from "./pages/Course";
 import GetDeliveries from "./pages/GetDeliveriesAndRevision";
 import Home from "./pages/Home";
 import InsertLesson from "./pages/InsertLesson";
+import MyDeliveries from "./pages/MyDeliveries";
 
 const Routes = () => {
     return (
@@ -23,6 +24,9 @@ const Routes = () => {
                 </Route>
                 <Route path="/course/:courseId/deliveries">
                     <GetDeliveries/>
+                </Route>
+                <Route path="/user/deliveries">
+                    <MyDeliveries/>
                 </Route>
                 <Route path="/login">
                     <Login/>

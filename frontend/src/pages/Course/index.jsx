@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { BASE_URL } from '../../core/utils/auth';
+import { Link } from 'react-router-dom';
+import ButtonLogout from '../../core/components/ButtonLogout';
+import { BASE_URL, isAllowedByRole } from '../../core/utils/auth';
 import { makePrivateRequest } from '../../core/utils/request';
 import Lesson from './components/Lesson';
 import Task from './components/Task';
+import {ReactComponent as ArrowIcon} from '../../core/assets/images/arrow.svg'
 import './styles.css';
 
 const Course = () => {
@@ -17,15 +20,37 @@ const Course = () => {
         })
         .finally(() => {
         })
-    }, []);
+    }, [courseId]);
     
     console.log(listOfTaskOrLesson)
     
     return (
         <div className="container-course-page">
             <div className="content-above">
-                <h1 className="content-above-title">{listOfTaskOrLesson.name}</h1>
-                <button>SAIR</button>
+                <div className="content-above-left">
+                    <Link to="/" className="link-icon-goback">
+                        <ArrowIcon className="custom-arrow-previous"/>
+                    </Link>
+                    <h1 className="content-above-title">{listOfTaskOrLesson.name}</h1>
+                </div>
+                <div className="content-above-course-actions">
+                    {isAllowedByRole(['ROLE_INSTRUCTOR', 'ROLE_ADMIN']) && (
+                        <Link to={`${courseId}/deliveries`}>
+                            <button className="button-delivery-by-course">ENTREGAS</button>
+                        </Link>
+                    )}
+                    {isAllowedByRole(['ROLE_STUDENT']) && (
+                        <Link to={`/user/deliveries`}>
+                            <button className="button-delivery-by-course">MINHAS ENTREGAS</button>
+                        </Link>
+                    )}
+                    {isAllowedByRole(['ROLE_INSTRUCTOR']) && (
+                        <Link to={`/course/${courseId}/insert`}>
+                            <button className="button-delivery-by-course">INSERIR AULA</button>
+                        </Link>
+                    )}
+                    <ButtonLogout/>
+                </div>
             </div>
             <div className="course-page-container">
                 {listOfTaskOrLesson.lessons?.map(lesson => (

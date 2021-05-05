@@ -4,11 +4,12 @@
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px 10px rgb(0 0 0 / 20%);
 }
 
 .content-left {
     width: 50%;
-    border-right: 1px solid #c4c4c4;
 }
 
 .content-left-title {
@@ -21,6 +22,7 @@
     width: 50%;
     /* background: #c4c4c4; */
     padding: 10px;
+    border-left: 1px solid #c4c4c4;
 }
 
 .content-right-actions {
