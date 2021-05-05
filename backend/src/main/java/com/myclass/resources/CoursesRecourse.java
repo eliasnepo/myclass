@@ -1,12 +1,13 @@
 package com.myclass.resources;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myclass.dto.CourseDTO;
@@ -21,8 +22,11 @@ public class CoursesRecourse {
 	private CourseService service;
 	
 	@GetMapping
-	public ResponseEntity<List<CourseDTO>> findListOfCoursesByUserAuthenticated() {
-		List<CourseDTO> list = service.findListOfCoursesByUserAuthenticated();
+	public ResponseEntity<Page<CourseDTO>> findListOfCoursesByUserAuthenticated(
+			@RequestParam(value = "page", defaultValue = "0") Integer page) {
+		
+		PageRequest pageRequest = PageRequest.of(page, 4);
+		Page<CourseDTO> list = service.findListOfCoursesByUserAuthenticated(pageRequest);
 		return ResponseEntity.ok().body(list);
 	}
 	
