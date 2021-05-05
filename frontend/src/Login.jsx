@@ -15,7 +15,7 @@ const Login = () => {
         console.log(user);
         makeLogin(user)
         .then(response => {
-            console.log(response);
+            // console.log(response);
             localStorage.setItem('app-token', JSON.stringify(response.data))
             history.push('/')
         });
