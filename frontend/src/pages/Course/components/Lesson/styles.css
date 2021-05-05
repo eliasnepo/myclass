@@ -4,6 +4,10 @@
     margin-bottom: 30px;
 }
 
+.lesson-title {
+    font-weight: 600;
+}
+
 .lesson-subtitle {
     display: -webkit-box;
     -webkit-line-clamp: 2;
