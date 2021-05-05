@@ -4,6 +4,7 @@ import history from "./core/utils/history";
 import Login from "./Login";
 import Course from "./pages/Course";
 import Home from "./pages/Home";
+import InsertLesson from "./pages/InsertLesson";
 
 const Routes = () => {
     return (
@@ -13,8 +14,11 @@ const Routes = () => {
                 <Route path="/" exact>
                     <Home/>
                 </Route>
-                <Route path="/course">
+                <Route path="/course" exact>
                     <Course/>
+                </Route>
+                <Route path="/course/insert">
+                    <InsertLesson/>
                 </Route>
                 <Route path="/login">
                     <Login/>
