@@ -1,14 +1,14 @@
 import { isAllowedByRole } from '../../../../core/utils/auth';
 import './styles.css';
 
-const Task = ({ title, subtitle }) => {
+const Task = (props) => {
     return(
         <div className="task-container">
             <div className="content-left">
-                <p className="content-left-title">{title}</p>
-                <p className="content-left-subtitle">{subtitle}</p>
+                <p className="content-left-title">{props.title}</p>
+                <p className="content-left-subtitle">{props.subtitle}</p>
             </div>
-            {isAllowedByRole(['ROLE_STUDENT']) && (
+            {isAllowedByRole(['ROLE_STUDENT']) && (!props.hide) && (
                 <div className="content-right">
                     <form className="content-right-actions">
                         <input 

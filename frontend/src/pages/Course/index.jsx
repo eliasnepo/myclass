@@ -12,17 +12,20 @@ import './styles.css';
 const Course = () => {
     const { courseId } = useParams();
     const [listOfTaskOrLesson, setListOfTaskOrLesson] = useState({});
+    const [deliveriesList, setDeliveriesList] = useState([]);
 
     useEffect(() => {
         makePrivateRequest({ url: `${BASE_URL}/courses/${courseId}`, method: 'GET' })
         .then(response => {
             setListOfTaskOrLesson(response.data)
         })
-        .finally(() => {
+
+        makePrivateRequest({ url: `${BASE_URL}/deliveries/person/gets`, method: 'GET' })
+        .then(response => {
+            setDeliveriesList(response.data);
         })
     }, [courseId]);
     
-    console.log(listOfTaskOrLesson)
     
     return (
         <div className="container-course-page">
@@ -53,9 +56,20 @@ const Course = () => {
                 </div>
             </div>
             <div className="course-page-container">
-                {listOfTaskOrLesson.lessons?.map(lesson => (
-                    lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
-                )
+                {listOfTaskOrLesson.lessons?.map(lesson => {
+                    let hide = false;
+                    deliveriesList.map(delivery => {
+                        if (delivery.lesson.id === lesson.id) {
+                            if (delivery.status === "ACCEPTED" || delivery.status === "REJECTED") {
+                                hide = true;
+                            }
+                        }
+                    })
+                    
+                    return (
+                        lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
+                    )
+                }
                 )}
             </div>
         </div>
