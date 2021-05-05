@@ -14,11 +14,11 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 3);
 
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Cálculo 3A', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Integrais de linha, integrais de superfícies, etc.', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Equações Diferenciais Ordinárias', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Lorem ipsum blablabla', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Estruturas de Dados 1', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Lorem ipsum blablabla', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Física 3', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Lorem ipsum blablabla', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Matemática Discreta', 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-course-3250007_1280.jpg', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Cálculo 3A', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados-removebg-preview_UWPbaA8LG.png', 'Integrais de linha, integrais de superfícies, etc.', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Equações Diferenciais Ordinárias', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados-removebg-preview_UWPbaA8LG.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Estruturas de Dados 1', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados-removebg-preview_UWPbaA8LG.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Física 3', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados-removebg-preview_UWPbaA8LG.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Matemática Discreta', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados-removebg-preview_UWPbaA8LG.png', 'Lorem ipsum blablabla', NOW());
 
 INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 1);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 2);

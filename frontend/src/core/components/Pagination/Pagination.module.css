@@ -43,3 +43,13 @@
 .paginationPrevious.active, .paginationNext.active{
     color: var(--dark-blue1);
 }
+
+.pageActive {
+    color: var(--dark-blue1);
+    cursor: pointer;
+}
+
+.pageInactive {
+    color: grey;
+    cursor: default;
+}

@@ -13,4 +13,5 @@
 .button-logout-stylish:hover {
     background-color: #dc3545;
     color: white;
+    cursor: pointer;
 }
