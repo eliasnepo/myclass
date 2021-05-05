@@ -1,13 +1,22 @@
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import { makePrivateRequest } from '../../core/utils/request';
 import './styles.css';
 
 const InsertLesson = () => {
+    const { courseId } = useParams();
     const { handleSubmit, register } = useForm();
     const history = useHistory();
 
     const onSubmit = data => {
-        console.log(data);
+        const payload = {
+            ...data,
+            course: {
+                id: courseId
+            }
+        }
+        console.log(payload);
+        makePrivateRequest({ url: ``})
     }
 
     const handleOnClickCancel = () => {

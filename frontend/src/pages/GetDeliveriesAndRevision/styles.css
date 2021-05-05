@@ -1,0 +1,27 @@
+/* CONTAINER */
+.deliveries-container {
+    padding: 30px;
+    min-height: calc(100vh - 180px);
+}
+
+/* PARTE DOS CARDS */
+.deliveries-content-below {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 330px);
+    grid-gap: 33px 20px;
+    justify-content: space-between;
+}
+
+/* RESPONSIVO */
+@media (max-width: 998px) {
+}
+
+@media (max-width: 741px) {
+    .deliveries-content-below {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 630px) {
+}

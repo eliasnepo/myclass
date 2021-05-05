@@ -1,0 +1,68 @@
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import './styles.css';
+
+const CardDelivery = (props) => {
+    const [statusName, setStatusName] = useState('');
+    const { handleSubmit, register } = useForm();
+
+    let data = new Date(props.createdAt);
+
+    function formatDate(time) {
+        const formatter = new Intl.NumberFormat('pt-BR', {
+          currency: 'BRL',
+          minimumIntegerDigits: 2,
+        });
+      
+        return formatter.format(time);
+    }
+
+    useEffect(() => {
+        if (props.status === "PENDING") {
+            setStatusName("PENDENTE")
+        } else if (props.status === "ACCEPTED") {
+            setStatusName("ACEITO")
+        } else {
+            setStatusName("REJEITADO")
+        }
+    }, [])
+
+    const onSubmit = data => {
+        console.log(data)
+    }
+
+    return (
+        <div className="card-delivery-container">
+            <h1 className={`title-card-delivery ${props.status}`}>{statusName}</h1>
+            <p className="uri-link"><strong>Link:</strong> {props.uri}</p>
+            <p><strong>Aluno:</strong> {props.user.name}</p>
+            <p><strong>Data:</strong> {`${data.toLocaleDateString("pt-br")} às ${formatDate(data.getHours())}:${formatDate(data.getMinutes())}`}</p>
+            <form 
+            onSubmit={handleSubmit(onSubmit)}
+            className={`form-card-delivery ${props.status === "ACCEPTED" || props.status === "REJECTED" ? 'hide-form' : ''}`}
+            >
+                <textarea
+                placeholder="Insira o feedback da revisão (max 90 caracteres)."
+                >
+
+                </textarea>
+                <div className="label-group">
+                    <input type="radio" name="status"/>
+                    <label>Aceitar</label>
+                </div>
+                <div className="label-group">
+                    <input type="radio" name="status"/>
+                    <label>Rejeitar</label>
+                </div>
+                <button
+                className="button-save-revision"
+                >
+                    CORRIGIR
+                </button>
+            </form>
+        </div>
+
+    );
+}
+
+export default CardDelivery;
