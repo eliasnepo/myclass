@@ -35,7 +35,7 @@ public class DeliverResource {
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	@GetMapping(value = "/person")
+	@GetMapping(value = "/person/gets")
 	public ResponseEntity<List<DeliverDTO>> getDeliveriesOfUser() {
 		List<DeliverDTO> dto = service.getDeliveriesOfUser();
 		return ResponseEntity.ok().body(dto);

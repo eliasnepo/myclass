@@ -28,6 +28,7 @@ const GetDeliveries = () => {
             key={delivery.id}
             uri={delivery.uri}
             user={delivery.user}
+            lesson={delivery.lesson}
             status={delivery.status}
             createdAt={delivery.createdAt} 
             feedback={delivery.feedback}

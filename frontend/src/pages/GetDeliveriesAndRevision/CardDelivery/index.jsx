@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router';
+import { BASE_URL } from '../../../core/utils/auth';
+import { makePrivateRequest } from '../../../core/utils/request';
 import './styles.css';
 
 const CardDelivery = (props) => {
@@ -28,13 +31,17 @@ const CardDelivery = (props) => {
     }, [])
 
     const onSubmit = data => {
-        console.log(data)
+        makePrivateRequest({ url: `${BASE_URL}/deliveries/${props.id}`, method: 'PUT', data })
+        .then(response => {
+            window.location.reload();
+        })
     }
 
     return (
         <div className="card-delivery-container">
             <h1 className={`title-card-delivery ${props.status}`}>{statusName}</h1>
             <div className="content-info-above">
+                <p className="uri-link"><strong>Tarefa:</strong> {props.lesson.title}</p>
                 <p className="uri-link"><strong>Link:</strong> {props.uri}</p>
                 <p><strong>Aluno:</strong> {props.user.name}</p>
                 <p><strong>Data:</strong> {`${data.toLocaleDateString("pt-br")} às ${formatDate(data.getHours())}:${formatDate(data.getMinutes())}`}</p>
