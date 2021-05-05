@@ -58,16 +58,22 @@ const Course = () => {
             <div className="course-page-container">
                 {listOfTaskOrLesson.lessons?.map(lesson => {
                     let hide = false;
+                    let statusDelivery = '';
+                    let feedbackDelivery = '';
                     deliveriesList.map(delivery => {
                         if (delivery.lesson.id === lesson.id) {
                             if (delivery.status === "ACCEPTED" || delivery.status === "REJECTED") {
                                 hide = true;
+                                statusDelivery = delivery.status;
+                                feedbackDelivery = delivery.feedback;
                             }
                         }
                     })
                     
                     return (
-                        lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
+                        lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle} hide={hide} delivery={statusDelivery} feedback={feedbackDelivery}/> 
+                        : 
+                        <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
                     )
                 }
                 )}

@@ -79,6 +79,7 @@ public class DeliverService {
 		if (repository.findCustomDeliver(user, lesson, course) != null) {
 			Deliver deliver = repository.findCustomDeliver(user, lesson, course);
 			deliver.setCreatedAt(Instant.now());
+			deliver.setUri(dto.getUri());
 			deliver = repository.save(deliver);
 			return new DeliverDTO(deliver);
 		} else {
