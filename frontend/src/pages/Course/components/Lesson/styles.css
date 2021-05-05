@@ -4,6 +4,12 @@
     margin-bottom: 30px;
     border-radius: 20px;
     box-shadow: 0 5px 30px 10px rgb(0 0 0 / 20%);
+
+    transition: transform 0.35s;
+}
+
+.lesson-container:hover {
+    transform: scale(1.03);
 }
 
 .lesson-title {
