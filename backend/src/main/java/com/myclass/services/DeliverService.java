@@ -21,6 +21,7 @@ import com.myclass.repositories.CourseRepository;
 import com.myclass.repositories.DeliverRepository;
 import com.myclass.repositories.LessonRepository;
 import com.myclass.repositories.UserRepository;
+import com.myclass.services.exceptions.ForbiddenException;
 
 
 @Service
@@ -52,6 +53,12 @@ public class DeliverService {
 	public List<DeliverDTO> getDeliveriesByCourse(Long id) {
 		Course course = courseRepository.getOne(id);
 		Set<Deliver> list = course.getDeliveries();
+		
+		User user = authService.authenticated();
+		if (!course.getUsers().contains(user)) {
+			throw new ForbiddenException("Access denied");
+		}
+		
 		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
 	}
 	

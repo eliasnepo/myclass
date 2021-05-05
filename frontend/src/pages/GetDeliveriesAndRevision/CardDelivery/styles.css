@@ -1,0 +1,96 @@
+.card-delivery-container {
+    width: 330px;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 30px 10px rgb(0 0 0 / 20%);
+    border-radius: 20px;
+}
+
+.title-card-delivery {
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 21px;
+}
+
+/* FEEDBACK */ 
+.feedback-display {
+    display: none;
+}
+
+.show-feedback {
+    display: block;
+}
+
+.form-card-delivery {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hide-form {
+    display: none;
+}
+
+.form-card-delivery textarea {
+    resize: none;
+    outline: none;
+    padding: 5px;
+    margin: 15px 0;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #adacac;
+    border-radius: 10px;
+}
+
+.label-group {
+    display: flex;
+    align-items: center;
+}
+
+.label-group label{
+    margin-left: 5px;
+}
+
+.button-save-revision {
+    width: 40%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border: 1px solid #61bd4f;
+    color: #61bd4f;
+    background-color: transparent;
+    border-radius: 15px;
+    transition: 0.2s all;
+}
+
+.button-save-revision:hover {
+    background-color: #61bd4f;
+    color: white;
+}
+
+.uri-link {
+    word-break: break-all;
+}
+
+.card-delivery-container p {
+    margin: 10px 0px 5px 0px;
+}
+
+.PENDING {
+    color: #f2d600;
+}
+
+.ACCEPTED {
+    color: #61bd4f;
+}
+
+.REJECTED {
+    color: #dc3545;
+}
+
+.content-info-above {
+    padding: 10px 0;
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+}
