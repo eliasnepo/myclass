@@ -68,3 +68,8 @@
     padding-top: 0;
     padding-bottom: 0;
 } */
+
+.pending-task-message {
+    margin-left: 1px;
+    color: #f2d600;
+}

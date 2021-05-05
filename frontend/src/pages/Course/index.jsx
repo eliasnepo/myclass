@@ -67,6 +67,9 @@ const Course = () => {
                                 statusDelivery = delivery.status;
                                 feedbackDelivery = delivery.feedback;
                             }
+                            if (delivery.status === "PENDING") {
+                                statusDelivery = delivery.status;
+                            }
                         }
                     })
                     

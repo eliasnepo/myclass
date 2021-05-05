@@ -24,6 +24,7 @@ const Task = (props) => {
             </div>
             {isAllowedByRole(['ROLE_STUDENT']) && (!props.hide) && (
                 <div className="content-right">
+                    {props.delivery === "PENDING" ? <small className="pending-task-message">Tarefa já enviada! Aguardando correção do professor.</small> : null}
                     <form className="content-right-actions">
                         <input 
                         type="text" 
