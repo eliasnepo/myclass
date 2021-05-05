@@ -44,11 +44,10 @@ export default function Home() {
             <div className={styles.content}>
                 <div className={styles.coursesContainer}>
                     {courses?.map((course) => (
-                        <Link to={`course/${course.id}`}>
+                        <Link to={`course/${course.id}`} key={course.id}>
                             <CourseCard 
                             courseTitle={course.name}
                             imgUri={course.imgUri}
-                            key={course.id}
                             />
                         </Link>
                     ))}
