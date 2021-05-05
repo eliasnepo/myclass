@@ -20,7 +20,7 @@ const InsertLesson = () => {
     }
 
     const handleOnClickCancel = () => {
-        history.push('../')
+        history.push(`/course/${courseId}`)
     }
 
     return (

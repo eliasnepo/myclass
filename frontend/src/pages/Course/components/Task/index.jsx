@@ -1,3 +1,4 @@
+import { isAllowedByRole } from '../../../../core/utils/auth';
 import './styles.css';
 
 const Task = ({ title, subtitle }) => {
@@ -7,7 +8,8 @@ const Task = ({ title, subtitle }) => {
                 <p className="content-left-title">{title}</p>
                 <p className="content-left-subtitle">{subtitle}</p>
             </div>
-            <div className="content-right">
+            {isAllowedByRole(['ROLE_STUDENT']) && (
+                <div className="content-right">
                     <form className="content-right-actions">
                         <input 
                         type="text" 
@@ -16,7 +18,8 @@ const Task = ({ title, subtitle }) => {
                         />
                         <button className="button-form-right" >ENVIAR</button>
                     </form>
-            </div>
+                </div>
+            )}
         </div>
     );
 }
