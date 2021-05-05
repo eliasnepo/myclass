@@ -34,24 +34,37 @@ const CardDelivery = (props) => {
     return (
         <div className="card-delivery-container">
             <h1 className={`title-card-delivery ${props.status}`}>{statusName}</h1>
-            <p className="uri-link"><strong>Link:</strong> {props.uri}</p>
-            <p><strong>Aluno:</strong> {props.user.name}</p>
-            <p><strong>Data:</strong> {`${data.toLocaleDateString("pt-br")} às ${formatDate(data.getHours())}:${formatDate(data.getMinutes())}`}</p>
+            <div className="content-info-above">
+                <p className="uri-link"><strong>Link:</strong> {props.uri}</p>
+                <p><strong>Aluno:</strong> {props.user.name}</p>
+                <p><strong>Data:</strong> {`${data.toLocaleDateString("pt-br")} às ${formatDate(data.getHours())}:${formatDate(data.getMinutes())}`}</p>
+            </div>
+            <div className={`feedback-display ${props.status === "ACCEPTED" || props.status === "REJECTED" ? 'show-feedback' : ''}`}>
+                <p><strong>Feedback: </strong>{props.feedback}</p>
+            </div>
             <form 
             onSubmit={handleSubmit(onSubmit)}
             className={`form-card-delivery ${props.status === "ACCEPTED" || props.status === "REJECTED" ? 'hide-form' : ''}`}
             >
                 <textarea
                 placeholder="Insira o feedback da revisão (max 90 caracteres)."
+                name="feedback"
+                ref={register({
+                    required: true
+                })}
                 >
 
                 </textarea>
                 <div className="label-group">
-                    <input type="radio" name="status"/>
+                    <input type="radio" name="status" value="ACCEPTED" ref={register({
+                        required: true
+                    })}/>
                     <label>Aceitar</label>
                 </div>
                 <div className="label-group">
-                    <input type="radio" name="status"/>
+                    <input type="radio" name="status" value="REJECTED" ref={register({
+                        required: true
+                    })}/>
                     <label>Rejeitar</label>
                 </div>
                 <button

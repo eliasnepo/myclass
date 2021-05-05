@@ -29,6 +29,7 @@ INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 5);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 1);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 2);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (2, 3);
+INSERT INTO tb_user_course (user_id, course_id) VALUES (3, 1);
 
 INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 1 - Parametrização de curvas', 'Nesta aula você aprenderá a parametrizar curvas', 0, 1);
 INSERT INTO tb_lesson (title, subtitle, status, course_id) VALUES ('Aula 2 - Integrais de linhas', 'Nesta aula você aprenderá a calcular integrais de linhas', 0, 1);

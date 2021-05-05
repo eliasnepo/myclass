@@ -30,6 +30,8 @@ const GetDeliveries = () => {
             user={delivery.user}
             status={delivery.status}
             createdAt={delivery.createdAt} 
+            feedback={delivery.feedback}
+            id={delivery.id}
             />
           ))}
         </div>

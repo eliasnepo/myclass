@@ -12,7 +12,15 @@
     text-align: center;
     margin-bottom: 0;
     padding-bottom: 21px;
-    border-bottom: 1px solid #e4e4e4;
+}
+
+/* FEEDBACK */ 
+.feedback-display {
+    display: none;
+}
+
+.show-feedback {
+    display: block;
 }
 
 .form-card-delivery {
@@ -32,6 +40,8 @@
     margin: 15px 0;
     width: 100%;
     height: 80px;
+    border: 1px solid #adacac;
+    border-radius: 10px;
 }
 
 .label-group {
@@ -64,7 +74,7 @@
 }
 
 .card-delivery-container p {
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0px 5px 0px;
 }
 
 .PENDING {
@@ -77,4 +87,10 @@
 
 .REJECTED {
     color: #dc3545;
+}
+
+.content-info-above {
+    padding: 10px 0;
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
 }
