@@ -20,11 +20,17 @@ const Course = () => {
     console.log(listOfTaskOrLesson)
     
     return (
-        <div className="course-page-container">
-            {listOfTaskOrLesson.lessons?.map(lesson => (
-                lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
-            )
-            )}
+        <div className="container-course-page">
+            <div className="content-above">
+                <h1 className="content-above-title">{listOfTaskOrLesson.name}</h1>
+                <button>SAIR</button>
+            </div>
+            <div className="course-page-container">
+                {listOfTaskOrLesson.lessons?.map(lesson => (
+                    lesson.status === "TASK" ? <Task key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/> : <Lesson key={lesson.id} title={lesson.title} subtitle={lesson.subtitle}/>
+                )
+                )}
+            </div>
         </div>
     );
 }

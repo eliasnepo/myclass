@@ -1,10 +1,11 @@
 import './styles.css';
 
-const Task = ({ title }) => {
+const Task = ({ title, subtitle }) => {
     return(
         <div className="task-container">
             <div className="content-left">
                 <p className="content-left-title">{title}</p>
+                <p className="content-left-subtitle">{subtitle}</p>
             </div>
             <div className="content-right">
                     <form className="content-right-actions">
