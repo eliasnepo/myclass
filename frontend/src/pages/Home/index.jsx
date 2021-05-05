@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CustomButton from '../../core/components/CustomButton/CustomButton';
 import CourseCard from './components/CourseCard/CourseCard';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import { makePrivateRequest } from '../../core/utils/request.js'
@@ -8,11 +7,19 @@ import { BASE_URL, logout } from '../../core/utils/auth';
 
 export default function Home() {
     const [courses, setCourses] = useState([])
+    const [userInfo, setUserInfo] = useState({})
 
     useEffect(() => {
         makePrivateRequest({method: 'GET', url: `${BASE_URL}/courses`})
         .then(response => {
             setCourses(response.data)
+        })
+    }, [])
+
+    useEffect(() => {
+        makePrivateRequest({method: 'GET', url: `${BASE_URL}/user`})
+        .then(response => {
+            setUserInfo(response.data)
         })
     }, [])
 
@@ -35,9 +42,9 @@ export default function Home() {
 
                 <div className={styles.profileContainer}>
                     <ProfileCard 
-                    studentName="Elias Nepomuceno"
-                    institutionName="Universidade Federal de Goiás (UFG)"
-                    courseCount="4"
+                    studentName={userInfo.name}
+                    institutionName={userInfo.university}
+                    courseCount={userInfo.courseCount}
                     />
                 </div>
             </div>
