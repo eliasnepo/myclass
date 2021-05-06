@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 
 function Login() {
@@ -17,12 +18,12 @@ function Login() {
       .then(response => {
         if (response.data) {
           localStorage.setItem('app-token', JSON.stringify(response.data))
-          // toast.success('Login realizado com sucesso!')
+          toast.success('Login realizado com sucesso!')
           history.push('/')
         }
       })
       .catch(() => {
-        // toast.error('Falha ao realizar login!');
+        toast.error('Falha ao realizar login!');
       })
   };
 

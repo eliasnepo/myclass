@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineMail, AiOutlineUser } fro
 import { GoMortarBoard } from "react-icons/go"
 import { RiBuilding4Fill, RiLockPasswordLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { makeRequest } from "../../../core/utils/request";
 import AuthCard from "../Card";
 import history from "../../../core/utils/history";
@@ -23,21 +23,24 @@ function Register() {
       name: data.name,
       password: data.password,
       university: data.university,
-      roles: {
-        id: data.role
-      }
+      roles: [
+        {
+          id: data.role,
+        }
+      ]
     }
     makeRequest({
       url: `${BASE_URL}/register`,
       method: "POST",
-      data: payload,
+      data: payload
     })
       .then(() => {
         history.push("/login");
-        // toast.success("Cadastro realizado com sucesso!");
+        toast.success("Cadastro realizado com sucesso!");
       })
       .catch(() => {
-        // toast.error("Falha ao realizar cadastro!");
+        toast.error("Falha ao realizar cadastro!");
+        history.push('/register')
       });
   };
 
