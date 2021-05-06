@@ -1,0 +1,63 @@
+.pageContainer {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.headersContainer {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.coursesContainer {
+    height: 630px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 240px);
+    grid-gap: 36px;
+
+    padding-right: 140px;
+}
+
+.courseEnrollContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enrollButton {
+    width: 180px;
+    height: 40px;
+    margin-top: 7px;
+
+    background-color: #0C2D48;
+    border: 1px solid #0C2D48;
+    color: white;
+    outline: none;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.2s all;
+}
+
+.enrollButton:hover {
+    background-color: transparent;
+    color: #0C2D48;
+    cursor: pointer;
+}
+
+.link-icon-goback {
+    height: 22px;
+}
+
+.custom-arrow-previous {
+    transform: rotate(-180deg);
+    margin-right: 20px;
+}
+
+.pageTitleContainer {
+    display: flex;
+    align-items: center;
+}

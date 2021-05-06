@@ -43,3 +43,28 @@
 
     border-left: 3px solid var(--dark-blue1) ;
 }
+
+@media(max-width: 1200px) {
+    .pageContainer {
+        max-width: 935px;
+    }
+    
+    .profileContainer {
+        padding-left: 40px;
+    }
+    .coursesContainer {
+        padding-right: 40px;
+    }
+}
+
+@media(max-height: 900px) {
+    .headersContainer {
+        margin-top: 40px;
+    }
+    
+    .coursesContainer {
+        height: 530px;
+
+        grid-gap: 10px;
+    }
+}

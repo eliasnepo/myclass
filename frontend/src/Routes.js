@@ -2,6 +2,7 @@ import { Route, Router, Switch } from "react-router";
 import Navbar from "./core/components/Navbar/Navbar";
 import history from "./core/utils/history";
 import Course from "./pages/Course";
+import Enrollment from "./pages/Enrollment";
 import GetDeliveries from "./pages/GetDeliveriesAndRevision";
 import Home from "./pages/Home";
 import Login from './pages/Auth/Login/index'
@@ -30,6 +31,9 @@ const Routes = () => {
                 </Route> */}
                 <Route path="/login">
                     <Login/>
+                </Route>
+                <Route path="/enrollment">
+                    <Enrollment />
                 </Route>
                 <Route path="/register">
                     <Register/>

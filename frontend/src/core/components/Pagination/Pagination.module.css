@@ -53,3 +53,9 @@
     color: grey;
     cursor: default;
 }
+
+@media(max-height: 900px) {
+    .paginationContainer {
+        margin: 0;
+    }
+}
