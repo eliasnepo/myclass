@@ -1,0 +1,35 @@
+.label-registrar {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    background-color: #ecf0f1;
+    margin: 14px 0;
+    border-radius: 10px;
+    gap: .5em;
+    position: relative;
+}
+
+.label-registrar-person-1 {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 60%;
+    background-color: #ecf0f1;
+    margin: 14px 0;
+    border-radius: 10px;
+    gap: .5em;
+    position: relative;
+}
+
+.label-registrar-person-2 {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 37%;
+    background-color: #ecf0f1;
+    margin: 14px 0;
+    border-radius: 10px;
+    gap: .5em;
+    position: relative;
+}

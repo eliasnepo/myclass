@@ -1,0 +1,24 @@
+.input-registrar {
+    height: 45px;
+    width: calc(100% - 24px);
+    border: none;
+    background-color: #ecf0f1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    align-items: center;
+    padding: 0;
+}
+
+.select-input {
+    margin-right: 7px;
+}
+
+.select-input:hover {
+    cursor: pointer;
+}
+
+.selects-inputs {
+    display: flex;
+    justify-content: space-between;
+}
