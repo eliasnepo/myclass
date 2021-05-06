@@ -33,3 +33,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+@media(max-height: 900px) {
+    .container {
+        min-height: 510px;
+    }
+}

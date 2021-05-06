@@ -10,9 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.myclass.dto.CourseDTO;
 import com.myclass.dto.CourseWithDetailsDTO;
 import com.myclass.dto.UserInsertDTO;
 import com.myclass.dto.UserDTO;
+import com.myclass.dto.UserEnrollDTO;
 import com.myclass.dto.UserInfoDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.Role;
@@ -65,6 +67,18 @@ public class UserService implements UserDetailsService {
 		}
 		logger.info("Usuário encontrado: " + username);
 		return user;
+	}
+	
+	@Transactional
+	public CourseDTO enrollUser(UserEnrollDTO dto) {
+		User user = authService.authenticated();
+		Course course = courseRepository.getOne(dto.getCourse().getId());
+		
+		user.getCourses().add(course);
+		
+		repository.save(user);
+		
+		return new CourseDTO(course);
 	}
 	
 	private void copyDtoToEntity(UserInsertDTO dto, User entity) {
