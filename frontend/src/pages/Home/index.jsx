@@ -36,7 +36,7 @@ export default function Home() {
     return(
         <div className={styles.pageContainer}>
             <div className={styles.headersContainer}>
-                <h1>Bem vindo(a), {userInfo.name}</h1>
+                <h1 className={styles.headerTitle}>Bem vindo(a), {userInfo.name}</h1>
                 <div className={styles.logoutButton}>
                     <ButtonLogout />
                 </div>
