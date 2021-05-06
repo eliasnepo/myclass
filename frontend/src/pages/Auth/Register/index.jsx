@@ -18,10 +18,19 @@ function Register() {
   password.current = watch("password", "");
 
   const onSubmit = (data) => {
+    const payload = {
+      email: data.email,
+      name: data.name,
+      password: data.password,
+      university: data.university,
+      roles: {
+        id: data.role
+      }
+    }
     makeRequest({
       url: `${BASE_URL}/register`,
       method: "POST",
-      data: data,
+      data: payload,
     })
       .then(() => {
         history.push("/login");
@@ -79,17 +88,17 @@ function Register() {
             <select
               className="input-registrar select-input rezise-width-2"
               type="text"
-              placeholder="Escolha o colégio ou universidade"
+              placeholder="Escolha entre professor e aluno."
               name="role"
               ref={register({
-                required: "Você deve escolher uma instituição!"
+                required: "Você deve escolher um cargo!"
               })}
             >
-              <option value="Universidade Federal de Goiás">Aluno</option>
-              <option value="Universidade Federal de Goiás">Professor</option>
+              <option value="1">Aluno</option>
+              <option value="2">Professor</option>
             </select>
-            {errors.university && (
-              <small className="invalid">{errors.university.message}</small>
+            {errors.role && (
+              <small className="invalid">{errors.role.message}</small>
             )}
           </label>
         </div>
