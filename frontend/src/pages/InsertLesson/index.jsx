@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import { BASE_URL } from '../../core/utils/auth';
 import { makePrivateRequest } from '../../core/utils/request';
 import './styles.css';
@@ -17,8 +18,11 @@ const InsertLesson = () => {
             }
         }
         makePrivateRequest({ url: `${BASE_URL}/lessons`, method: 'POST', data: payload })
-        .then(response => {
-            console.log(response.data)
+        .then(() => {
+            toast.info("Aula/tarefa cadastrada!");
+        })
+        .catch(() => {
+            toast.error("Erro ao inserir aula/tarefa!")
         })
     }
 

@@ -12,10 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myclass.dto.CourseDTO;
 import com.myclass.dto.CourseWithDetailsDTO;
-import com.myclass.dto.UserInsertDTO;
+import com.myclass.dto.RoleDTO;
 import com.myclass.dto.UserDTO;
 import com.myclass.dto.UserEnrollDTO;
 import com.myclass.dto.UserInfoDTO;
+import com.myclass.dto.UserInsertDTO;
 import com.myclass.entities.Course;
 import com.myclass.entities.Role;
 import com.myclass.entities.User;
@@ -85,19 +86,17 @@ public class UserService implements UserDetailsService {
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
 		entity.setUniversity(dto.getUniversity());
-		entity.getRoles().clear();
-		Role role = roleRepository.getOne(1L);
-		entity.getRoles().add(role);
+		
 		entity.getCourses().clear();
 		for (CourseWithDetailsDTO courseDto : dto.getCourses()) {
 			Course course = courseRepository.getOne(courseDto.getId());
 			entity.getCourses().add(course);
 		}
 		
-		/*entity.getRoles().clear();
+		entity.getRoles().clear();
 		for (RoleDTO roleDto : dto.getRoles()) {
 			Role role = roleRepository.getOne(roleDto.getId());
 			entity.getRoles().add(role);
-		} MÉTODOS PARA DICIONAR ROLES PASSADO NO DTO */
+		}
 	}
 }
