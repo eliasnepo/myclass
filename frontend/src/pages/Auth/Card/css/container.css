@@ -1,0 +1,11 @@
+.container-auth {
+    min-height: calc(100vh - 50px);
+    padding: 40px;
+    background-color: #ecf0f1;
+    /* background: url('../../../../core/assets/home-background.svg') no-repeat bottom; */
+    /* background-size: cover;
+    -webkit-background-size: cover; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}

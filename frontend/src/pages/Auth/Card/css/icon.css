@@ -1,0 +1,18 @@
+.icon-div {
+    display: inline-block;
+}
+
+.icon-registrar-input {
+    margin-left: 8px;
+}
+
+.icon-show-input {
+    margin-right: 8px;
+    cursor: pointer;
+    color: #696a6a;
+    transition: all .25s;
+}
+
+.icon-show-input:hover {
+    color: #272828;
+}

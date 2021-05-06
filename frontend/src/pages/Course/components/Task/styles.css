@@ -58,24 +58,35 @@
     filter: brightness(110%);
 }
 
-/* .content-right-title {
-    color: red;
-    font-weight: 600;
-}
-
-.content-right-subtitle {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-} */
-
-/* .person-content {
-    padding-top: 0;
-    padding-bottom: 0;
-} */
-
 .pending-task-message {
     margin-left: 1px;
     color: #f2d600;
+}
+
+@media (max-width: 597px) {
+    .task-container {
+        flex-direction: column;
+    }
+    
+    .content-left {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .content-right {
+        width: 100%;
+        padding: 10px 0 0 0;
+        border-left: none;
+        border-top: 1px solid #c4c4c4;
+    }
+
+    .input-form-right {
+        width: 75%;
+    }
+}
+
+@media (max-width: 470px) {
+    .pending-task-message {
+        font-size: 0.7rem;
+    }
 }

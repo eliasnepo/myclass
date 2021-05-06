@@ -1,0 +1,13 @@
+.link {
+    font-size: .75em;
+    align-self: flex-start;
+    font-weight: bold;
+    color: #568bff;
+    margin: 10px 0 20px 5px;
+    text-decoration: underline;
+    transition:  all .5s;
+}
+
+.link:hover {
+    filter: brightness(150%);
+}
