@@ -40,3 +40,9 @@
     transform: rotate(-180deg);
     margin-right: 20px;
 }
+
+@media (max-width: 850px) {
+    .container-course-page {
+        padding: 40px 25px;
+    }
+}
