@@ -104,7 +104,13 @@
 }
 
 @media(max-width: 430px) {
+    .pageContainer{
+        max-width: 220px;
+        padding-bottom: 200px;
+    }
     .coursesContainer {
-        grid-template-columns: 200px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 }
