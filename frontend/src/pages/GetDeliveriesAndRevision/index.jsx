@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router';
 import { ReactComponent as Arrow} from '../../core/assets/images/arrow.svg'
 import ButtonLogout from '../../core/components/ButtonLogout';
@@ -11,16 +12,30 @@ const GetDeliveries = () => {
   const [search, setSearch] = useState([]);
   const { courseId } = useParams();
   const history = useHistory();
+  const { handleSubmit, register } = useForm();
 
   useEffect(() => {
     makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET' })
     .then(response => {
-      setSearch(response.data)
+      console.log(response.data.content)
+      setSearch(response.data.content)
     })
   }, [])
 
   const handleGoBack = () => {
     history.push(`/course/${courseId}`);
+  }
+
+  const onSubmitSelect = (event) => {
+    const params = {
+      status: event.target.value
+    }
+    
+    makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET', params })
+    .then(response => {
+      console.log(response.data.content)
+      setSearch(response.data.content)
+    })
   }
 
   return (
@@ -30,7 +45,14 @@ const GetDeliveries = () => {
           <Arrow className="custom-arrow-previous" />
           <h1>Voltar</h1>
         </div>
+        <div>
+          <select onChange={onSubmitSelect}>
+            <option value="PENDING">Pendentes</option>
+            <option value="ACCEPTED">Aceito</option>
+            <option value="REJECTED">Rejeitados</option>
+          </select>
         <ButtonLogout/>
+        </div>
       </div>
       <div className="deliveries-content-below">
         {search?.map(delivery => (

@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,16 +52,20 @@ public class DeliverService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<DeliverDTO> getDeliveriesByCourse(Long id) {
+	public Page<DeliverDTO> getDeliveriesByCourse(Long id, DeliverStatus status, Pageable pageable) {
 		Course course = courseRepository.getOne(id);
-		Set<Deliver> list = course.getDeliveries();
+//		Set<Deliver> list = course.getDeliveries();
 		
 		User user = authService.authenticated();
 		if (!course.getUsers().contains(user)) {
 			throw new ForbiddenException("Access denied");
 		}
 		
-		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
+		Page<Deliver> deliveries = repository.find(course, status, pageable);
+		
+		return deliveries.map(deliver -> new DeliverDTO(deliver));
+		
+//		return list.stream().map(x -> new DeliverDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional(readOnly = true)
