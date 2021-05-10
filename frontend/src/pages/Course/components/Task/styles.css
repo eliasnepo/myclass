@@ -60,7 +60,8 @@
 
 .pending-task-message {
     margin-left: 1px;
-    color: #f2d600;
+    color: #e4c900;
+    font-weight: 600;
 }
 
 @media (max-width: 597px) {

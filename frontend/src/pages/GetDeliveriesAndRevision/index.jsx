@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router';
 import { ReactComponent as Arrow} from '../../core/assets/images/arrow.svg'
 import ButtonLogout from '../../core/components/ButtonLogout';
@@ -12,7 +11,6 @@ const GetDeliveries = () => {
   const [search, setSearch] = useState([]);
   const { courseId } = useParams();
   const history = useHistory();
-  const { handleSubmit, register } = useForm();
 
   useEffect(() => {
     makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET' })
@@ -30,7 +28,7 @@ const GetDeliveries = () => {
     const params = {
       status: event.target.value
     }
-    
+
     makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET', params })
     .then(response => {
       console.log(response.data.content)
@@ -46,7 +44,7 @@ const GetDeliveries = () => {
           <h1>Voltar</h1>
         </div>
         <div>
-          <select onChange={onSubmitSelect}>
+          <select className="select-status" onChange={onSubmitSelect}>
             <option value="PENDING">Pendentes</option>
             <option value="ACCEPTED">Aceito</option>
             <option value="REJECTED">Rejeitados</option>

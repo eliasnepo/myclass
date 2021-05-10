@@ -33,8 +33,8 @@ const Course = () => {
                 <div className="content-above-left">
                     <Link to="/" className="link-icon-goback">
                         <ArrowIcon className="custom-arrow-previous"/>
+                        <h1 className="content-above-title">{listOfTaskOrLesson.name}</h1>
                     </Link>
-                    <h1 className="content-above-title">{listOfTaskOrLesson.name}</h1>
                 </div>
                 <div className="content-above-course-actions">
                     {isAllowedByRole(['ROLE_INSTRUCTOR', 'ROLE_ADMIN']) && (
