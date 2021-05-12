@@ -57,7 +57,7 @@
     }
 }
 
-@media(max-height: 900px) {
+@media(max-height: 1024px) {
     .headersContainer {
         margin-top: 40px;
     }
@@ -66,5 +66,51 @@
         height: 530px;
 
         grid-gap: 10px;
+    }
+}
+
+@media(max-width: 920px) {
+    .pageContainer {
+        max-width: 739px;
+    }
+    .coursesContainer {
+        grid-template-columns: repeat(2, 200px);
+        padding-right: 15px;
+    }
+    .profileContainer {
+        padding-left: 15px;
+    }
+}
+
+@media(max-width: 760px) {
+    .profileContainer {
+        display: none;
+    }
+    .headerTitle {
+        /* width: 300px;
+        word-break: break-all;
+        font-size: 24px; */
+        display: none;
+    }
+    .headersContainer{
+        height: 50px;
+    }
+    .pageContainer {
+        width: 425px;
+    }
+    .coursesContainer {
+        padding-right: 0;
+    }
+}
+
+@media(max-width: 430px) {
+    .pageContainer{
+        max-width: 220px;
+        padding-bottom: 200px;
+    }
+    .coursesContainer {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 }
