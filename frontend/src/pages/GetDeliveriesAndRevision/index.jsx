@@ -15,10 +15,9 @@ const GetDeliveries = () => {
   useEffect(() => {
     makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET' })
     .then(response => {
-      console.log(response.data.content)
       setSearch(response.data.content)
     })
-  }, [])
+  }, [courseId])
 
   const handleGoBack = () => {
     history.push(`/course/${courseId}`);
@@ -31,7 +30,6 @@ const GetDeliveries = () => {
 
     makePrivateRequest({ url: `${BASE_URL}/deliveries/${courseId}`, method: 'GET', params })
     .then(response => {
-      console.log(response.data.content)
       setSearch(response.data.content)
     })
   }

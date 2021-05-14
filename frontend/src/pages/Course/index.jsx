@@ -60,6 +60,7 @@ const Course = () => {
                     let hide = false;
                     let statusDelivery = '';
                     let feedbackDelivery = '';
+                    // eslint-disable-next-line array-callback-return
                     deliveriesList.map(delivery => {
                         if (delivery.lesson.id === lesson.id) {
                             if (delivery.status === "ACCEPTED" || delivery.status === "REJECTED") {
