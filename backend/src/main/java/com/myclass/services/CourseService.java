@@ -1,5 +1,7 @@
 package com.myclass.services;
 
+import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +42,20 @@ public class CourseService {
 		
 		CourseWithDetailsDTO dto = new CourseWithDetailsDTO(course, course.getLessons());
 		return dto;
+	}
+	
+	public CourseDTO insert(CourseDTO dto) {
+		Course entity = new Course();
+		copyDtoToEntity(dto, entity);
+		repository.save(entity);
+		return new CourseDTO(entity);
+	}
+	
+	private void copyDtoToEntity(CourseDTO dto, Course entity) {
+		entity.setName(dto.getName());
+		entity.setDescription(dto.getDescription());
+		entity.setImgUri(dto.getImgUri());
+		entity.setCreatedAt(Instant.now());
 	}
 
 }
