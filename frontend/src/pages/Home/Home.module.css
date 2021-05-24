@@ -1,27 +1,35 @@
 .pageContainer {
     max-width: 1135px;
+    min-height: calc(100vh - 50px);
     margin: 0 auto;
     padding-bottom: 40px;
+    padding-top: 60px;
 }
 
 .headersContainer {
     width: 100%;
-    margin-top: 70px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
+    
+}
+
+.headerTitle {
+    width: 70%;
+    /* word-break: break-all; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .content {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.logoutButton {
-    width: 80px;
-    height: 40px;
-    margin-right: -10px;
-    margin-bottom: 50px;
+.middleContent {
+    border-right: 3px solid var(--dark-blue1);
 }
 
 .coursesContainer {
@@ -34,32 +42,36 @@
     grid-gap: 36px;
 
     align-items: center;
-
-    padding-right: 140px;
 }
 
-.profileContainer {
-    padding-left: 140px;
+.buttonStylish {
+    background-color: transparent;
+    border: 1px solid #0C2D48;
+    color: 0C2D48;
+    padding: 8px 15px;
+    margin-right: 10px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.2s all;
+}
 
-    border-left: 3px solid var(--dark-blue1) ;
+.buttonStylish:hover {
+    background-color: #0C2D48;
+    color: white;
+    cursor: pointer;
 }
 
 @media(max-width: 1200px) {
     .pageContainer {
-        max-width: 935px;
-    }
-    
-    .profileContainer {
-        padding-left: 40px;
-    }
-    .coursesContainer {
-        padding-right: 40px;
+        max-width: 90vw;
     }
 }
 
 @media(max-height: 1024px) {
-    .headersContainer {
-        margin-top: 40px;
+    .pageContainer {
+        padding-top: 30px;
+        padding-bottom: 0px;
     }
     
     .coursesContainer {
@@ -69,16 +81,15 @@
     }
 }
 
-@media(max-width: 920px) {
+@media(max-width: 970px) {
     .pageContainer {
-        max-width: 739px;
+        max-width: 94vw;
     }
+}
+
+@media(max-width: 920px) {
     .coursesContainer {
         grid-template-columns: repeat(2, 200px);
-        padding-right: 15px;
-    }
-    .profileContainer {
-        padding-left: 15px;
     }
 }
 
@@ -86,20 +97,29 @@
     .profileContainer {
         display: none;
     }
+
+    .headersContainer {
+        margin-bottom: 10px;
+    }
+
     .headerTitle {
-        /* width: 300px;
-        word-break: break-all;
-        font-size: 24px; */
         display: none;
     }
+
     .headersContainer{
         height: 50px;
     }
+
     .pageContainer {
         width: 425px;
     }
+
     .coursesContainer {
         padding-right: 0;
+    }
+
+    .middleContent {
+        display: none;
     }
 }
 
