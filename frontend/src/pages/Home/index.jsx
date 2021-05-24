@@ -42,20 +42,22 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.content}>
-                <div className={styles.coursesContainer}>
-                    {courses?.map((course) => (
-                        <Link to={`course/${course.id}`} key={course.id}>
-                            <CourseCard 
-                            courseTitle={course.name}
-                            imgUri={course.imgUri}
-                            />
-                        </Link>
-                    ))}
-                    <Pagination 
-                    totalPages={totalPages} 
-                    activePage={activePage}
-                    onChange={page => (setActivePage(page))}
-                    />
+                <div className={styles.coursesAndPagination}>
+                    <div className={styles.coursesContainer}>
+                        {courses?.map((course) => (
+                            <Link to={`course/${course.id}`} key={course.id}>
+                                <CourseCard 
+                                courseTitle={course.name}
+                                imgUri={course.imgUri}
+                                />
+                            </Link>
+                        ))}
+                    </div>
+                        <Pagination 
+                        totalPages={totalPages} 
+                        activePage={activePage}
+                        onChange={page => (setActivePage(page))}
+                        />
                 </div>
 
                 <div className={styles.profileContainer}>

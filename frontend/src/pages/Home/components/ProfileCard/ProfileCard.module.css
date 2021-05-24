@@ -1,24 +1,32 @@
 .container {
     width: 330px;
-    height: 70vh;
-    min-height: 710px;
-    padding-top: 30px;
+    /* height: 70vh; */
+    /* min-height: 710px; */
+    padding: 30px 15px;
 
     background-color: var(--light-blue1);
     border-radius: 10px;
     
-    display: flex;
+    /* display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; */
 
     box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
 }
 
+.avatarImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(90, 84, 84);
+}
+
 .studentInfo {
     align-self: flex-start;
-    margin-top: 22px;
-    margin-left: 16px;
-
+    /* margin-top: 22px;
+    margin-left: 16px; */
+    padding-top: 15px;
     font-size: 18px;
     font-weight: 600;
 }
@@ -34,7 +42,7 @@
     overflow: hidden;
 }
 
-@media(max-height: 1024px) {
+/* @media(max-height: 1024px) {
     .container {
         min-height: 510px;
         width: 290px;
@@ -45,4 +53,4 @@
     .container {
         display: none;
     }
-}
+} */

@@ -4,7 +4,10 @@ import styles from './ProfileCard.module.css'
 export default function ProfileCard(props) {
     return(
         <div className={styles.container}>
-            <img src="https://via.placeholder.com/245.png" alt="Imagem de perfil"/>
+            <div className={styles.avatarImage}>
+                <img src="https://avatars.githubusercontent.com/u/60260242?v=4" width="245" alt="Imagem de perfil" />
+            </div>
+            {/* <img src="https://via.placeholder.com/245.png" alt="Imagem de perfil"/> */}
             <div className={styles.studentInfo}>
                 <p className={`${styles.studentName} ${styles.multilineTruncation}`}>
                     Aluno: {props.studentName}

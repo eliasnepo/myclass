@@ -4,6 +4,7 @@
     align-items: center;
     margin-top: 20px;
     grid-column: span 2;
+    padding-right: 140px;
 }
 
 .paginationItem {
@@ -52,6 +53,24 @@
 .pageInactive {
     color: grey;
     cursor: default;
+}
+
+@media(max-width: 1200px) {
+    .paginationContainer {
+        padding-right: 40px;
+    }
+}
+
+@media(max-width: 920px) {
+    .paginationContainer {
+        padding-right: 15px;
+    }
+}
+
+@media(max-width: 760px) {
+    .paginationContainer {
+        padding-right: 0px;
+    }
 }
 
 @media(max-height: 900px) {

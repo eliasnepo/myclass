@@ -24,6 +24,10 @@
     margin-bottom: 50px;
 }
 
+.coursesAndPagination {
+    border-right: 3px solid var(--dark-blue1);
+}
+
 .coursesContainer {
     height: 630px;
 
@@ -40,8 +44,6 @@
 
 .profileContainer {
     padding-left: 140px;
-
-    border-left: 3px solid var(--dark-blue1) ;
 }
 
 @media(max-width: 1200px) {
@@ -100,6 +102,10 @@
     }
     .coursesContainer {
         padding-right: 0;
+    }
+
+    .coursesAndPagination {
+        border: none;
     }
 }
 
