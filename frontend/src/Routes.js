@@ -8,32 +8,30 @@ import Home from "./pages/Home";
 import Login from './pages/Auth/Login/index'
 import Register from './pages/Auth/Register/index'
 import InsertLesson from "./pages/InsertLesson";
+import PrivateRoute from "./core/utils/PrivateRoutes";
 
 const Routes = () => {
     return (
         <Router history={history}>
             <Navbar />
             <Switch>
-                <Route path="/" exact>
+                <PrivateRoute path="/" allowedRoutes={[]} exact>
                     <Home/>
-                </Route>
-                <Route path="/course/:courseId" exact>
+                </PrivateRoute>
+                <PrivateRoute path="/course/:courseId" allowedRoutes={[]} exact>
                     <Course/>
-                </Route>
-                <Route path="/course/:courseId/insert">
+                </PrivateRoute>
+                <PrivateRoute path="/course/:courseId/insert" allowedRoutes={['ROLE_INSTRUCTOR']}>
                     <InsertLesson/>
-                </Route>
-                <Route path="/course/:courseId/deliveries">
+                </PrivateRoute>
+                <PrivateRoute path="/course/:courseId/deliveries" allowedRoutes={['ROLE_INSTRUCTOR']}>
                     <GetDeliveries/>
-                </Route>
-                {/* <Route path="/user/deliveries">
-                    <MyDeliveries/>
-                </Route> */}
+                </PrivateRoute>
+                <PrivateRoute path="/enrollment" allowedRoutes={[]}>
+                    <Enrollment />
+                </PrivateRoute>
                 <Route path="/login">
                     <Login/>
-                </Route>
-                <Route path="/enrollment">
-                    <Enrollment />
                 </Route>
                 <Route path="/register">
                     <Register/>
