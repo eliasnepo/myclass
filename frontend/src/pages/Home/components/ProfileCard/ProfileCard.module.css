@@ -42,6 +42,12 @@
     overflow: hidden;
 }
 
+@media(max-width: 810px) {
+    .container {
+        width: 280px;
+    }
+}
+
 /* @media(max-height: 1024px) {
     .container {
         min-height: 510px;

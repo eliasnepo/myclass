@@ -3,6 +3,7 @@ import CourseCard from './components/CourseCard/CourseCard';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import { makePrivateRequest } from '../../core/utils/request.js'
 import styles from './Home.module.css';
+import CustomButton from '../../core/components/CustomButton/CustomButton'
 import { BASE_URL } from '../../core/utils/auth';
 import Pagination from '../../core/components/Pagination/Pagination';
 import { Link } from 'react-router-dom';
@@ -38,6 +39,9 @@ export default function Home() {
             <div className={styles.headersContainer}>
                 <h1 className={styles.headerTitle}>Bem vindo(a), {userInfo.name}</h1>
                 <div className={styles.logoutButton}>
+                    <Link to="/enrollment">
+                        <button className={styles.buttonStylish}>MATRICULAR</button>
+                    </Link>
                     <ButtonLogout />
                 </div>
             </div>
@@ -59,7 +63,7 @@ export default function Home() {
                         onChange={page => (setActivePage(page))}
                         />
                 </div>
-
+                <div className={styles.middleContent}/>
                 <div className={styles.profileContainer}>
                     <ProfileCard 
                     studentName={userInfo.name}
