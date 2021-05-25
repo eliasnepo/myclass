@@ -14,11 +14,11 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 3);
 
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Cálculo 3A', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados_3HO9vXi7t.png', 'Integrais de linha, integrais de superfícies, etc.', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Equações Diferenciais Ordinárias', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados_3HO9vXi7t.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Cálculo 3A', 'https://ik.imagekit.io/yuapu0v8eof/imagem_cálculo_48paV4CjV.png', 'Integrais de linha, integrais de superfícies, etc.', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Equações Diferenciais Ordinárias', 'https://ik.imagekit.io/yuapu0v8eof/edo_imagem_SvV9BLr1c.png', 'Lorem ipsum blablabla', NOW());
 INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Estruturas de Dados 1', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados_3HO9vXi7t.png', 'Lorem ipsum blablabla', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Física 3', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados_3HO9vXi7t.png', 'Lorem ipsum blablabla', NOW());
-INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Matemática Discreta', 'https://ik.imagekit.io/yuapu0v8eof/imagem_estrutura_de_dados_3HO9vXi7t.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Física 3', 'https://ik.imagekit.io/yuapu0v8eof/fisica-3_kdGz_6rc3.png', 'Lorem ipsum blablabla', NOW());
+INSERT INTO tb_course (name, img_Uri, description, created_At) VALUES ('Circuitos Lógicos 1', 'https://ik.imagekit.io/yuapu0v8eof/circuitos_logicos_XTKzwuLtv.png', 'Lorem ipsum blablabla', NOW());
 
 INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 1);
 INSERT INTO tb_user_course (user_id, course_id) VALUES (1, 2);
