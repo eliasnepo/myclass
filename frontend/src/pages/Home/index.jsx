@@ -3,7 +3,6 @@ import CourseCard from './components/CourseCard/CourseCard';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import { makePrivateRequest } from '../../core/utils/request.js'
 import styles from './Home.module.css';
-import CustomButton from '../../core/components/CustomButton/CustomButton'
 import { BASE_URL } from '../../core/utils/auth';
 import Pagination from '../../core/components/Pagination/Pagination';
 import { Link } from 'react-router-dom';
